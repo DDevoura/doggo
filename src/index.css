@@ -19,8 +19,12 @@ h1 {
   width: 80px;
 }
 
+.dogimg {
+  max-width: 500px;
+}
+
 p {
-  font-size: 12px;
   font-family: "Courier New", Courier, monospace;
-  color: #ffff;
+  font-size: 15px;
+  color: #fff;
 }
