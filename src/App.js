@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import axios from "axios";
+import paww from "./paww.png";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+class App extends Component {
+  state = {
+    dogs: []
+  };
+  componentDidMount() {
+    axios.get("https://dog.ceo/api/breeds/list/all").then(res => {
+      this.setState({
+        dogs: Object.keys(res.data.message)
+      });
+    });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <img className="paw" src={paww} />
+        <h1 className="dick">shit doggo app</h1>
+        <select className="menu">
+          {this.state.dogs.map(dog => {
+            return <option value={dog}>{dog}</option>;
+          })}
+        </select>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          use this shit doggo app to look at cute doggos without actually seeing
+          any doggos.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      </div>
+    );
+  }
 }
-
 export default App;
